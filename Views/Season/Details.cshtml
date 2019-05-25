@@ -1,0 +1,58 @@
+﻿@model PlayerSelector.Models.Season
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Season</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.numberOfGames)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numberOfGames)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mostMatchesPlayer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mostMatchesPlayer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mostGoalsPlayer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mostGoalsPlayer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.startDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.startDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.endDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.endDay)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
