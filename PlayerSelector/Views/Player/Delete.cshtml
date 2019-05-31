@@ -1,0 +1,88 @@
+﻿@model PlayerSelector.Models.Player
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Player</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.numberOfGoals)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numberOfGoals)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.numberOfGames)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numberOfGames)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.numberOfPoints)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numberOfPoints)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.goalRatio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.goalRatio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gameRatio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gameRatio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pointRatio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pointRatio)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
