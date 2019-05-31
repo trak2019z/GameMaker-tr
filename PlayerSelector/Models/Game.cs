@@ -8,7 +8,7 @@ namespace PlayerSelector.Models
 {
     public class Game : IEntity
     {
-        public virtual List<Team> Teams { get; set; }
+        public virtual ICollection<Team> Teams { get; set; }
         public int NumberOfPlayers { get; set; }
         public DateTime Date { get; set; }
         public bool CanSignUp { get; set; }

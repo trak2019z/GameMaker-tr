@@ -34,7 +34,46 @@
             @Html.DisplayFor(model => model.CanSignUp)
         </dd>
 
-    </dl>
+        <dd>
+
+
+            <br />
+            @foreach (var team in Model.Teams)
+            {
+                <h2>
+                    Zawodnicy druzyny:
+                    @team.Name
+                </h2>
+                <tr>
+                    <th>
+                        Imie
+                    </th>
+                    <th>
+                        Nazwisko
+                    </th>
+                    <th>
+                        Liczba goli
+                    </th>
+                </tr>
+                <br />
+                foreach (var playerInTeam in team.Players)
+                {
+                    <tr>
+                        <td>
+                            @playerInTeam.player.FirstName
+                        </td>
+                        <td>
+                            @playerInTeam.player.LastName
+                        </td>
+                        <td>
+                            @playerInTeam.NumberOfGoals
+                        </td>
+                    </tr>
+                    <br />
+                }
+            }
+        </dd>
+        </dl>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |

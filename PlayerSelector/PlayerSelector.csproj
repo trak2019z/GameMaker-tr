@@ -20,6 +20,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,6 +41,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -109,12 +117,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.1.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -206,6 +208,26 @@
     <Compile Include="Migrations\201905301645413_firstMigration.cs" />
     <Compile Include="Migrations\201905301645413_firstMigration.Designer.cs">
       <DependentUpon>201905301645413_firstMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905311907352_secondMigration.cs" />
+    <Compile Include="Migrations\201905311907352_secondMigration.Designer.cs">
+      <DependentUpon>201905311907352_secondMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905311945475_thirdMigration.cs" />
+    <Compile Include="Migrations\201905311945475_thirdMigration.Designer.cs">
+      <DependentUpon>201905311945475_thirdMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905311956259_thirdMigration1.cs" />
+    <Compile Include="Migrations\201905311956259_thirdMigration1.Designer.cs">
+      <DependentUpon>201905311956259_thirdMigration1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905312005239_icollectionTeams.cs" />
+    <Compile Include="Migrations\201905312005239_icollectionTeams.Designer.cs">
+      <DependentUpon>201905312005239_icollectionTeams.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905312026484_fifthMigration.cs" />
+    <Compile Include="Migrations\201905312026484_fifthMigration.Designer.cs">
+      <DependentUpon>201905312026484_fifthMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -333,6 +355,21 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201905301645413_firstMigration.resx">
       <DependentUpon>201905301645413_firstMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905311907352_secondMigration.resx">
+      <DependentUpon>201905311907352_secondMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905311945475_thirdMigration.resx">
+      <DependentUpon>201905311945475_thirdMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905311956259_thirdMigration1.resx">
+      <DependentUpon>201905311956259_thirdMigration1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905312005239_icollectionTeams.resx">
+      <DependentUpon>201905312005239_icollectionTeams.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905312026484_fifthMigration.resx">
+      <DependentUpon>201905312026484_fifthMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

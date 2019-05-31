@@ -32,6 +32,7 @@ namespace PlayerSelector.Controllers
             {
                 return HttpNotFound();
             }
+
             return View(team);
         }
 

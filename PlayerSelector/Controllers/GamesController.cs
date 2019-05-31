@@ -123,5 +123,15 @@ namespace PlayerSelector.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult SeeTeams(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Team team = db.Teams.Find(id);
+            return View(team);
+        }
     }
 }

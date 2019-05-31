@@ -11,6 +11,6 @@ namespace PlayerSelector.Models
         public string Name { get; set; }
         [MaxLength(6)]
         public virtual ICollection<PlayerInTeam> Players { get; set; }
-        public int Goals { get; set; }
+        public int? Goals { get; set; }
     }
 }
