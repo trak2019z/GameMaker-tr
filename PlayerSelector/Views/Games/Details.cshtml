@@ -8,7 +8,7 @@
 
 <div>
     <h4>Game</h4>
-	<hr />
+    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.NumberOfPlayers)
@@ -38,42 +38,66 @@
 
 
             <br />
+
             @foreach (var team in Model.Teams)
             {
-                <h2>
-                    Zawodnicy druzyny:
-                    @team.Name
-                </h2>
-                <tr>
-                    <th>
-                        Imie
-                    </th>
-                    <th>
-                        Nazwisko
-                    </th>
-                    <th>
-                        Liczba goli
-                    </th>
-                </tr>
-                <br />
-                foreach (var playerInTeam in team.Players)
-                {
+                <h2>Nazwa drużyny: @team.Name</h2>
+                <table class="table table-bordered table-responsive table-hover">
+
                     <tr>
-                        <td>
-                            @playerInTeam.player.FirstName
-                        </td>
-                        <td>
-                            @playerInTeam.player.LastName
-                        </td>
-                        <td>
-                            @playerInTeam.NumberOfGoals
-                        </td>
+                        <th>
+                            Imie
+                        </th>
+                        <th>
+                            Nazwisko
+                        </th>
+                        <th>
+                            Liczba goli
+                        </th>
+                        <th>
+                            Usuń
+                        </th>
+                        <th>
+                            Edytuj
+                        </th>
                     </tr>
-                    <br />
+                    @foreach (var playerInTeam in team.Players)
+                    {
+                <tr>
+                    <td>
+                        @playerInTeam.player.FirstName
+                    </td>
+                    <td>
+                        @playerInTeam.player.LastName
+                    </td>
+                    <td>
+                        @playerInTeam.NumberOfGoals
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "Delete", "PlayerInTeam", new { id = playerInTeam.Id, gameId = Model.Id }, null)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "PlayerInTeam", new { id = playerInTeam.Id, gameId = Model.Id }, null)
+                    </td>
+                </tr>
+                    }
+                </table>
+
+                <h4>Dodaj zawodnika</h4>
+                using (Html.BeginForm("addPlayer", "Games", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.DropDownList("Players", new SelectList(ViewBag.Players))
+
+                    @ViewBag.CurrentTeamId
+                    <input type="text" name="IdTeam" value="Team id: @team.Id" readonly visibility: hidden/>
+                    <input type="submit" value="Submit" />
                 }
+                //@Html.Action()
             }
+
+
         </dd>
-        </dl>
+    </dl>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |

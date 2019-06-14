@@ -124,5 +124,12 @@ namespace PlayerSelector.Controllers
             }
             base.Dispose(disposing);
         }
+
+        /*public void AddPlayer(int id, int playerId)
+        {
+            Team team = db.Teams.Find(id);
+            team.Players.Add(new PlayerInTeam(playerId));
+            db.SaveChanges();
+        }*/
     }
 }

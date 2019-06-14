@@ -11,14 +11,30 @@
     <h4>PlayerInTeam</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NumberOfGoals)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NumberOfGoals)
-        </dd>
-
+        <table class="table table-bordered table-responsive table-hover">
+            <tr>
+                <th>
+                    Imie
+                </th>
+                <th>
+                    Nazwisko
+                </th>
+                <th>
+                    Liczba goli
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Model.player.FirstName
+                </td>
+                <td>
+                    @Model.player.LastName
+                </td>
+                <td>
+                    @Model.NumberOfGoals
+                </td>
+            </tr>
+        </table>
     </dl>
 
     @using (Html.BeginForm()) {

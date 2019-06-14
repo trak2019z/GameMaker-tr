@@ -32,6 +32,21 @@ namespace PlayerSelector.Controllers
             {
                 return HttpNotFound();
             }
+
+
+            var players = db.Players.ToList();
+            List<string> playersToDropdown = new List<string>();
+
+            foreach(var player in players)
+            {
+                string temp = String.Format("{0} - {1} {2}", player.Id, player.FirstName, player.LastName);
+                playersToDropdown.Add(temp);
+            }
+
+            ViewBag.Players = playersToDropdown;
+
+            string elo = ViewBag.SelectedPlayer;
+
             return View(game);
         }
 
@@ -132,6 +147,39 @@ namespace PlayerSelector.Controllers
             }
             Team team = db.Teams.Find(id);
             return View(team);
+        }
+
+        [HttpPost]
+        public ActionResult addPlayer()
+        {
+            var selectedValue = Request.Form["Players"].ToString();
+            var teamIdName = Request.Form["IdTeam"].ToString();
+            int playerId = getPlayerId(selectedValue);
+            int teamId = getTeamId(teamIdName);
+            addPlayerToMatch(playerId, teamId);
+            return Redirect(Request.UrlReferrer.ToString());
+        }
+
+
+        private void addPlayerToMatch(int playerId, int teamId)
+        {
+            Team team = db.Teams.Find(teamId);
+            Player player = db.Players.Find(playerId);
+            PlayerInTeam playerInTeam = new PlayerInTeam();
+            playerInTeam.player = player;
+            team.Players.Add(playerInTeam);
+            db.SaveChanges();
+        }
+
+        private int getTeamId(string urlReferrer)
+        {
+            string[] parts = urlReferrer.Split(' ');
+            return Int32.Parse(parts[parts.Length - 1]);
+        }
+        private int getPlayerId(string selectedValue)
+        {
+            string[] parts = selectedValue.Split(' ');
+            return Int32.Parse(parts[0]);
         }
     }
 }

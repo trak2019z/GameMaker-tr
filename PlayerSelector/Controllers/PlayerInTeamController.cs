@@ -59,7 +59,7 @@ namespace PlayerSelector.Controllers
         }
 
         // GET: /PlayerInTeam/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id, int gameId)
         {
             if (id == null)
             {
@@ -78,19 +78,19 @@ namespace PlayerSelector.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="Id,NumberOfGoals")] PlayerInTeam playerinteam)
+        public ActionResult Edit([Bind(Include="Id,NumberOfGoals")] PlayerInTeam playerinteam, int gameId)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(playerinteam).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Games", new { id = gameId });
             }
             return View(playerinteam);
         }
 
         // GET: /PlayerInTeam/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id, int gameId)
         {
             if (id == null)
             {
@@ -107,12 +107,12 @@ namespace PlayerSelector.Controllers
         // POST: /PlayerInTeam/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id, int gameId)
         {
             PlayerInTeam playerinteam = db.PlayerInTeams.Find(id);
             db.PlayerInTeams.Remove(playerinteam);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Details","Games",new {id = gameId });
         }
 
         protected override void Dispose(bool disposing)
