@@ -229,6 +229,10 @@
     <Compile Include="Migrations\201905312026484_fifthMigration.Designer.cs">
       <DependentUpon>201905312026484_fifthMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906161736179_addConstructors.cs" />
+    <Compile Include="Migrations\201906161736179_addConstructors.Designer.cs">
+      <DependentUpon>201906161736179_addConstructors.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Game.cs" />
@@ -370,6 +374,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905312026484_fifthMigration.resx">
       <DependentUpon>201905312026484_fifthMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906161736179_addConstructors.resx">
+      <DependentUpon>201906161736179_addConstructors.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

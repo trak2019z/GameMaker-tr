@@ -35,6 +35,10 @@
         </dd>
 
         <dd>
+            @Model.Teams.ElementAt(0).Name - @Model.Teams.ElementAt(1).Name: @Model.Teams.ElementAt(0).Goals - @Model.Teams.ElementAt(1).Goals
+        </dd>
+
+        <dd>
 
 
             <br />
@@ -42,6 +46,8 @@
             @foreach (var team in Model.Teams)
             {
                 <h2>Nazwa drużyny: @team.Name</h2>
+                <br />
+                @Html.ActionLink("Zmien nazwe druzyny", "Edit", "Team", new { id = team.Id, gameId = Model.Id }, null)
                 <table class="table table-bordered table-responsive table-hover">
 
                     <tr>
@@ -63,23 +69,23 @@
                     </tr>
                     @foreach (var playerInTeam in team.Players)
                     {
-                <tr>
-                    <td>
-                        @playerInTeam.player.FirstName
-                    </td>
-                    <td>
-                        @playerInTeam.player.LastName
-                    </td>
-                    <td>
-                        @playerInTeam.NumberOfGoals
-                    </td>
-                    <td>
-                        @Html.ActionLink("Delete", "Delete", "PlayerInTeam", new { id = playerInTeam.Id, gameId = Model.Id }, null)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", "PlayerInTeam", new { id = playerInTeam.Id, gameId = Model.Id }, null)
-                    </td>
-                </tr>
+                        <tr>
+                            <td>
+                                @playerInTeam.player.FirstName
+                            </td>
+                            <td>
+                                @playerInTeam.player.LastName
+                            </td>
+                            <td>
+                                @playerInTeam.NumberOfGoals
+                            </td>
+                            <td>
+                                @Html.ActionLink("Delete", "Delete", "PlayerInTeam", new { id = playerInTeam.Id, gameId = Model.Id }, null)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", "PlayerInTeam", new { id = playerInTeam.Id, gameId = Model.Id }, null)
+                            </td>
+                        </tr>
                     }
                 </table>
 
@@ -89,7 +95,7 @@
                     @Html.DropDownList("Players", new SelectList(ViewBag.Players))
 
                     @ViewBag.CurrentTeamId
-                    <input type="text" name="IdTeam" value="Team id: @team.Id" readonly visibility: hidden/>
+                    <input type="text" name="IdTeam" value="Team id: @team.Id" readonly visibility: hidden />
                     <input type="submit" value="Submit" />
                 }
                 //@Html.Action()

@@ -60,7 +60,7 @@ namespace PlayerSelector.Controllers
         }
 
         // GET: /Team/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id, int gameId)
         {
             if (id == null)
             {
@@ -79,13 +79,13 @@ namespace PlayerSelector.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="Id,Name,Goals")] Team team)
+        public ActionResult Edit([Bind(Include="Id,Name,Goals")] Team team, int gameId)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(team).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Games", new { id = gameId });
             }
             return View(team);
         }

@@ -121,3 +121,4 @@ C:\git\PlayerSelector\GameMaker\PlayerSelector\obj\Debug\PlayerSelector.Migratio
 C:\git\PlayerSelector\GameMaker\PlayerSelector\obj\Debug\PlayerSelector.Migrations.thirdMigration1.resources
 C:\git\PlayerSelector\GameMaker\PlayerSelector\obj\Debug\PlayerSelector.Migrations.icollectionTeams.resources
 C:\git\PlayerSelector\GameMaker\PlayerSelector\obj\Debug\PlayerSelector.Migrations.fifthMigration.resources
+C:\git\PlayerSelector\GameMaker\PlayerSelector\obj\Debug\PlayerSelector.Migrations.addConstructors.resources

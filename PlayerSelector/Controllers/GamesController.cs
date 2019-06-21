@@ -33,8 +33,21 @@ namespace PlayerSelector.Controllers
                 return HttpNotFound();
             }
 
+            foreach (var team in game.Teams.ToList())
+                setNumberOfGoals(team);
+
+            
 
             var players = db.Players.ToList();
+
+            foreach (var team in game.Teams.ToList())
+            {
+                foreach (var playerInTeam in team.Players.ToList())
+                {
+                    players.Remove(playerInTeam.player);
+                }
+            }
+
             List<string> playersToDropdown = new List<string>();
 
             foreach(var player in players)
@@ -44,8 +57,6 @@ namespace PlayerSelector.Controllers
             }
 
             ViewBag.Players = playersToDropdown;
-
-            string elo = ViewBag.SelectedPlayer;
 
             return View(game);
         }
@@ -66,6 +77,14 @@ namespace PlayerSelector.Controllers
             if (ModelState.IsValid)
             {
                 db.Games.Add(game);
+                Team team_1 = new Team();
+                team_1.Name = "Pierwsza drużyna";
+                Team team_2 = new Team();
+                team_2.Name = "Druga drużyna";
+                team_1.Goals = 0;
+                team_2.Goals = 0;
+                game.Teams.Add(team_1);
+                game.Teams.Add(team_2);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -125,7 +144,13 @@ namespace PlayerSelector.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Game game = db.Games.Find(id);
+
+            foreach(var team in game.Teams.ToList())
+            {
+                game.Teams.Remove(team);
+            }
             db.Games.Remove(game);
+            
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -137,16 +162,6 @@ namespace PlayerSelector.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
-
-        public ActionResult SeeTeams(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Team team = db.Teams.Find(id);
-            return View(team);
         }
 
         [HttpPost]
@@ -180,6 +195,21 @@ namespace PlayerSelector.Controllers
         {
             string[] parts = selectedValue.Split(' ');
             return Int32.Parse(parts[0]);
+        }
+
+        private void setNumberOfGoals(Team team)
+        {
+            List<int?> goalsOfPlayers = new List<int?>();
+
+            foreach(var player in team.Players.ToList())
+            {
+                goalsOfPlayers.Add(player.NumberOfGoals);
+            }
+
+            team.Goals = goalsOfPlayers.Sum();
+            db.Teams.Attach(team);
+            db.Entry(team).State = EntityState.Modified;
+            db.SaveChanges();
         }
     }
 }
