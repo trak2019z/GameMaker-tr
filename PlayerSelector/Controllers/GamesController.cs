@@ -21,6 +21,7 @@ namespace PlayerSelector.Controllers
         }
 
         // GET: /Games/Details/5
+        
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -62,6 +63,7 @@ namespace PlayerSelector.Controllers
         }
 
         // GET: /Games/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -72,6 +74,7 @@ namespace PlayerSelector.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include="Id,NumberOfPlayers,Date,CanSignUp")] Game game)
         {
             if (ModelState.IsValid)
@@ -93,6 +96,7 @@ namespace PlayerSelector.Controllers
         }
 
         // GET: /Games/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -112,6 +116,7 @@ namespace PlayerSelector.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include="Id,NumberOfPlayers,Date,CanSignUp")] Game game)
         {
             if (ModelState.IsValid)
@@ -124,6 +129,7 @@ namespace PlayerSelector.Controllers
         }
 
         // GET: /Games/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -165,6 +171,7 @@ namespace PlayerSelector.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult addPlayer()
         {
             var selectedValue = Request.Form["Players"].ToString();

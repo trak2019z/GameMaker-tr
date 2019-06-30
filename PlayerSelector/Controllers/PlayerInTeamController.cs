@@ -59,6 +59,7 @@ namespace PlayerSelector.Controllers
         }
 
         // GET: /PlayerInTeam/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id, int gameId)
         {
             if (id == null)
@@ -90,6 +91,7 @@ namespace PlayerSelector.Controllers
         }
 
         // GET: /PlayerInTeam/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id, int gameId)
         {
             if (id == null)
